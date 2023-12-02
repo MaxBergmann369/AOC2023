@@ -1,6 +1,6 @@
 import {getLines} from "../readFile";
 
-const lines = getLines("01/input.txt");
+const lines: string[] = getLines("01/input.txt");
 
 let sum: number = 0;
 
@@ -19,7 +19,6 @@ for(const line of lines) {
         }
     }
 
-    console.log(first + last);
     sum += parseInt(first + last);
     first = "";
     last = "";

@@ -7,7 +7,9 @@
     "start01-1": "ts-node 01/star1.ts",
     "start01-2": "ts-node 01/star2.ts",
     "start02-1": "ts-node 02/star1.ts",
-    "start02-2": "ts-node 02/star2.ts"
+    "start02-2": "ts-node 02/star2.ts",
+    "start03-1": "ts-node 03/star1.ts",
+    "start03-2": "ts-node 03/star2.ts"
   },
   "author": "",
   "license": "ISC",

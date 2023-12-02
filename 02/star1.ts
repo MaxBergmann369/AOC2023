@@ -1,73 +1,24 @@
 import {getLines} from "../readFile";
+import {IGame, ICube, IBag, createGames} from "./models";
 
-const lines = getLines("02/input.txt");
+const lines: string[] = getLines("02/input.txt");
 
-interface IGame {
-    id: number,
-    bags: IBag[]
-}
-
-interface IBag {
-    cubes: ICube[]
-}
-
-interface ICube {
-    amount: number,
-    color: string
-}
-
-let limit1: ICube = {
+const limit1: ICube = {
     amount: 12,
     color: "red"
 }
 
-let limit2: ICube = {
+const limit2: ICube = {
     amount: 13,
     color: "green"
 }
 
-let limit3: ICube = {
+const limit3: ICube = {
     amount: 14,
     color: "blue"
 }
 
-let games: IGame[] = [];
-
-for(let line of lines) {
-    line = line.replace("Game", "");
-    const vals: string[] = line.split(":");
-
-    const sets = vals[1].split(";")
-
-    const bags: IBag[] = [];
-
-    for(const set of sets) {
-        let cubesRaw: string[] = set.split(",");
-        const cubes: ICube[] = [];
-        for(const cubeRaw of cubesRaw) {
-            const data = cubeRaw.trim().split(" ");
-            const cube: ICube = {
-                amount: parseInt(data[0]),
-                color: data[1]
-            }
-
-            cubes.push(cube);
-        }
-
-        const bag: IBag = {
-            cubes: cubes
-        }
-
-        bags.push(bag)
-    }
-
-    let game: IGame = {
-        id: parseInt(vals[0].trim()),
-        bags: bags
-    }
-
-    games.push(game);
-}
+const games: IGame[] = createGames(lines);
 
 let gameIds: number[] = []
 
@@ -93,7 +44,7 @@ for(let game of games) {
 
 let sum: number = 0;
 
-for(let id of gameIds) {
+for(const id of gameIds) {
     sum += id;
 }
 
