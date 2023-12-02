@@ -11,10 +11,11 @@
     "start03-1": "ts-node 03/star1.ts",
     "start03-2": "ts-node 03/star2.ts"
   },
-  "author": "",
+  "author": "Max Bergmann",
   "license": "ISC",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "@types/typescript": "^2.0.0"
   }
 }
