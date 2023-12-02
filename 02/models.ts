@@ -24,10 +24,12 @@ export function createGames(lines: string[]): IGame[] {
         const bags: IBag[] = [];
 
         for(const set of sets) {
-            let cubesRaw: string[] = set.split(",");
+            const cubesRaw: string[] = set.split(",");
             const cubes: ICube[] = [];
+
             for(const cubeRaw of cubesRaw) {
                 const data = cubeRaw.trim().split(" ");
+
                 const cube: ICube = {
                     amount: parseInt(data[0]),
                     color: data[1]
@@ -43,7 +45,7 @@ export function createGames(lines: string[]): IGame[] {
             bags.push(bag)
         }
 
-        let game: IGame = {
+        const game: IGame = {
             id: parseInt(vals[0].trim()),
             bags: bags
         }

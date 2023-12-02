@@ -1,5 +1,5 @@
 import {getLines} from "../readFile";
-import {IGame, IBag, createGames} from "./models";
+import {IGame, createGames} from "./models";
 
 const lines: string[] = getLines("02/input.txt");
 
@@ -8,14 +8,11 @@ const games: IGame[] = createGames(lines);
 let sumOfPows: number = 0;
 
 for(let game of games) {
-    const bags: IBag[] = game.bags;
-    let check: boolean = false;
-
     let green: number = 0;
     let red: number = 0;
     let blue: number = 0;
 
-    for(const bag of bags) {
+    for(const bag of game.bags) {
         for(const cube of bag.cubes) {
             if(cube.color === "green"&& cube.amount > green) {
                 green = cube.amount;

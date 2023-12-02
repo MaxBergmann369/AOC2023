@@ -1,5 +1,5 @@
 import {getLines} from "../readFile";
-import {IGame, ICube, IBag, createGames} from "./models";
+import {IGame, ICube, createGames} from "./models";
 
 const lines: string[] = getLines("02/input.txt");
 
@@ -22,12 +22,11 @@ const games: IGame[] = createGames(lines);
 
 let gameIds: number[] = []
 
-for(let game of games) {
-    let bags: IBag[] = game.bags;
+for(const game of games) {
     let check: boolean = false;
 
-    for(let bag of bags) {
-        for(let cube of bag.cubes) {
+    for(const bag of game.bags) {
+        for(const cube of bag.cubes) {
             if ((cube.amount > limit1.amount && cube.color === limit1.color)
                 || (cube.amount > limit2.amount && cube.color === limit2.color)
                 || (cube.amount > limit3.amount && cube.color === limit3.color)) {
