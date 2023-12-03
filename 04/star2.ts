@@ -1,3 +1,3 @@
 import {getLines} from "../readFile";
 
-const lines: string[]  = getLines("02/sample2.txt");
+const lines: string[]  = getLines("04/sample2.txt");
