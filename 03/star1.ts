@@ -11,22 +11,15 @@ for(let i: number = 0; i < lines.length; i++) {
     let endIdx: number = 0;
 
     for(let j: number = 0; j < lines[0].length; j++) {
+        let check: boolean = false;
         if(numbers.includes(lines[i][j])) {
             number += lines[i][j];
             endIdx = j;
+            check = true;
         }
-        else if(number !== "") {
+
+        if((!check && number !== "") || (j === lines[0].length - 1 && number !== "")) {
             let pS: number = endIdx - number.length + 1;
-            if(isPartNumber(i, pS, endIdx, lines)) {
-                sum += parseInt(number);
-            }
-
-            number = "";
-            endIdx = 0;
-        }
-
-        if(j === lines[0].length - 1 && number !== "") {
-            let pS = endIdx - number.length + 1;
             if(isPartNumber(i, pS, endIdx, lines)) {
                 sum += parseInt(number);
             }
