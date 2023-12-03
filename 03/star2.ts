@@ -2,12 +2,12 @@ import {getLines} from "../readFile";
 
 const lines: string[] = getLines("03/input.txt");
 
-let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+let numbers: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-let sum = 0;
+let sum: number = 0;
 
-for(let i = 0; i < lines.length; i++) {
-    for(let j = 0; j < lines[0].length; j++) {
+for(let i: number = 0; i < lines.length; i++) {
+    for(let j: number = 0; j < lines[0].length; j++) {
         if(lines[i][j] === "*") {
             sum += getGearRatio([i , j], lines)
         }
@@ -24,37 +24,37 @@ function getGearRatio(pos: number[], lines: string[]): number {
         gearNumbers[0].push(getWholeNumber(pos, lines));
     }
 
-    pos[1] += 1;
+    pos[1]++;
     if(isNumber(pos, lines)) {
         gearNumbers[0].push(getWholeNumber(pos, lines));
     }
 
-    pos[1] += 1;
+    pos[1]++;
     if(isNumber(pos, lines)) {
         gearNumbers[0].push(getWholeNumber(pos, lines));
     }
 
-    pos[0] += 1;
+    pos[0]++;
     if(isNumber(pos, lines)) {
         gearNumbers[1].push(getWholeNumber(pos, lines));
     }
 
-    pos[0] += 1;
+    pos[0]++;
     if(isNumber(pos, lines)) {
         gearNumbers[2].push(getWholeNumber(pos, lines));
     }
 
-    pos[1] -= 1;
+    pos[1]--;
     if(isNumber(pos, lines)) {
         gearNumbers[2].push(getWholeNumber(pos, lines));
     }
 
-    pos[1] -= 1;
+    pos[1]--;
     if(isNumber(pos, lines)) {
         gearNumbers[2].push(getWholeNumber(pos, lines));
     }
 
-    pos[0] -= 1;
+    pos[0]--;
     if(isNumber(pos, lines)) {
         gearNumbers[1].push(getWholeNumber(pos, lines));
     }
@@ -91,15 +91,11 @@ function getGearRatio(pos: number[], lines: string[]): number {
     return sum;
 }
 
-function getWholeNumber(posN: number[], lines: string[]): number {
-    const pos: number[] = [];
-
-    for(let p of posN) {
-        pos.push(p);
-    }
+function getWholeNumber(position: number[], lines: string[]): number {
+    const pos: number[] = Array.from(position);
 
     while(numbers.includes(lines[pos[0]][pos[1]])) {
-        pos[1] -= 1;
+        pos[1]--;
     }
 
     pos[1]++;
