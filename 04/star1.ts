@@ -14,10 +14,10 @@ for(const card of cards) {
 console.log(sum);
 
 
-function amountOfWinning(finalCard: ICard): number {
+function amountOfWinning(cards: ICard): number {
     let cnt: number = -1;
-    for(const card of finalCard.elfCards) {
-        if(finalCard.myCards.includes(card)) {
+    for(const card of cards.elfCards) {
+        if(cards.myCards.includes(card)) {
             cnt++;
         }
     }
