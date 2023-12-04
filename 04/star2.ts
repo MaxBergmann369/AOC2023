@@ -1,65 +1,32 @@
 import {getLines} from "../readFile";
+import {createCards, ICard} from "./models";
 
 const lines: string[]  = getLines("04/input.txt");
 
-interface ICard {
-    id: number,
-    elfCards: number[],
-    myCards: number[]
-}
-
-const finalCards: ICard[] = [];
-
-for(let line of lines) {
-    const vals: string[] = line.split(":")
-    const id: number = parseInt(vals[0].replace("Card", "").trim());
-    const cards: string[] = vals[1].split("|");
-    const elfCards: number[] = [];
-    for(let card of cards[0].split(" ")) {
-        if(!isNaN(parseInt(card))) {
-            elfCards.push(parseInt(card));
-        }
-    }
-
-    const myCards: number[] = [];
-    for(let card of cards[1].split(" ")) {
-        if(!isNaN(parseInt(card))) {
-            myCards.push(parseInt(card));
-        }
-    }
-
-    let card: ICard = {
-        id,
-        elfCards,
-        myCards
-    };
-
-    finalCards.push(card);
-}
-
-
+const cards: ICard[] = createCards(lines);
 
 function processScratchcards(cards: ICard[]): number {
     let sets: number[] = [];
     let winning: number[] = [];
 
-    for(let card of cards) {
+    //init
+    for(const card of cards) {
         sets.push(1);
         winning.push(hasWinning(card));
     }
 
+    //calc
     for(let i: number = 0; i < cards.length; i++) {
         for(let k: number  = 0; k < sets[i]; k++) {
             for (let j: number  = i; j < i + winning[i]; j++) {
                 sets[j+1]++;
             }
         }
-
-        console.log(sets[i])
     }
 
+    //sum
     let sum: number = 0;
-    for(let set of sets) {
+    for(const set of sets) {
         sum += set;
     }
 
@@ -68,7 +35,7 @@ function processScratchcards(cards: ICard[]): number {
 
 function hasWinning(finalCard: ICard): number {
     let cnt: number = 0
-    for(let card of finalCard.elfCards) {
+    for(const card of finalCard.elfCards) {
         if(finalCard.myCards.includes(card)) {
             cnt++;
         }
@@ -77,5 +44,5 @@ function hasWinning(finalCard: ICard): number {
     return cnt;
 }
 
-const result: number = processScratchcards(finalCards);
+const result: number = processScratchcards(cards);
 console.log(result);
