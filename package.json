@@ -9,7 +9,9 @@
     "start02-1": "ts-node 02/star1.ts",
     "start02-2": "ts-node 02/star2.ts",
     "start03-1": "ts-node 03/star1.ts",
-    "start03-2": "ts-node 03/star2.ts"
+    "start03-2": "ts-node 03/star2.ts",
+    "start04-1": "ts-node 04/star1.ts",
+    "start04-2": "ts-node 04/star2.ts"
   },
   "author": "Max Bergmann",
   "license": "ISC",
