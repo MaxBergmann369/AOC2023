@@ -13,13 +13,16 @@
     "start04-1": "ts-node 04/star1.ts",
     "start04-2": "ts-node 04/star2.ts",
     "start05-1": "ts-node 05/star1.ts",
-    "start05-2": "ts-node 05/star2.ts"
+    "start05-2": "ts-node 05/star2.ts",
+    "start06-1": "ts-node 06/star1.ts",
+    "start06-2": "ts-node 06/star2.ts"
   },
   "author": "Max Bergmann",
   "license": "ISC",
   "dependencies": {
+    "@types/typescript": "^2.0.0",
+    "bignumber.js": "^9.1.2",
     "fs": "^0.0.1-security",
-    "ts-node": "^10.9.1",
-    "@types/typescript": "^2.0.0"
+    "ts-node": "^10.9.1"
   }
 }
